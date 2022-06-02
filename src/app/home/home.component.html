@@ -1,0 +1,26 @@
+<div id="main">
+  <div>
+    <span id="title">Wall of Notes</span
+    ><button type="button" class="circular btn btn-success" (click)="open(modalContent)">
+      Add Note&nbsp;&nbsp;+
+    </button>
+  </div>
+  <div class="cont container">
+    <div class="row">
+        <app-sticky-note *ngFor="let note of notes" [name]="note.name" [message]="note.message"></app-sticky-note>
+    </div>
+  </div>
+  <br />
+
+  <ng-template #modalContent let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Note</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <app-new-note (close)="close()"></app-new-note>
+    </div>
+  </ng-template>
+</div>
